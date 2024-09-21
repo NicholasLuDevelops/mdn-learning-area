@@ -28,13 +28,20 @@
     <ul></ul>
 
     <script>
-      const unordlist = document.querySelector("ul");
-      const inp = document.querySelector("input");
-      const butt = document.querySelector("button");
+      const unorderedList = document.querySelector("ul");
+      const input = document.querySelector("input");
+      const addButton = document.querySelector("button");
 
-      const list = function isClicked() {
+      const list = document.createElement("li");
+      const span = document.createElement("li");
+      const delButton = document.createElement("li");
+
+      function isClicked() {
         let val = inp.value;
-        
+        inp.value = '';
+        span.appendChild(delButton);
+        list.appendChild(span);
+
       };
     </script>
   </body>
