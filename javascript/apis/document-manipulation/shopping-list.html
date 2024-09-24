@@ -32,26 +32,35 @@
       const input = document.querySelector("input");
       const addButton = document.querySelector("button");
 
-      const listItem = document.createElement("li");
-      const spanItem = document.createElement("span");
-      const delButton = document.createElement("button");
-      delButton.innerText = "delete";
-
+      
       addButton.addEventListener("click", isClicked);
       input.addEventListener("keypress", (event) => {
-        if (event.keyCode == "13") {
-          isClicked(event);
+        if (event.keyCode == "13" && input.value != "") {
+          isClicked();
         }
       });
-
-      function isClicked(e) {
+      
+      //Add a node to the list
+      function isClicked() {
         let val = input.value;
         input.value = "";
-        listItem.innerText = val;
-
+        
+        const listItem = document.createElement("li");
+        const spanItem = document.createElement("span");
+        const delButton = document.createElement("button");
+        
+        spanItem.innerText = val;
+        delButton.innerText = "Delete";
         spanItem.append(delButton);
         listItem.appendChild(spanItem);
+
+        delButton.addEventListener('click', () => {
+          unorderedList.removeChild(listItem);
+        });
+
         unorderedList.appendChild(listItem);
+
+        input.focus();
       }
     </script>
   </body>
